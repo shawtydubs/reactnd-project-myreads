@@ -20,7 +20,7 @@ class Book extends Component {
 };
 
 Book.propTypes = {
-    book: PropTypes.array.isRequired
+    book: PropTypes.object.isRequired
 };
 
 export default Book;
