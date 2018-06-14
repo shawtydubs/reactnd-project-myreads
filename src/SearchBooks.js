@@ -9,16 +9,22 @@ class SearchBooks extends Component {
     state = {
         value: '',
         searchResults: []
-    };
-
-    searchBooks = query => {
-        this.setState({value: query.trim()}, this.queryAPI);
     }
 
-    queryAPI = () => {
-        this.state.value && BooksAPI.search(this.state.value)
-            .then(searchResults => this.setState({searchResults}, this.updateResultsShelves));
-    };
+    searchBooks = query => {
+        this.setState({value: query.trim()}, this.updateResults);
+    }
+
+    updateResults = () => {
+        this.state.value === ''
+            ? this.resetSearchResults()
+            : BooksAPI.search(this.state.value)
+                .then(searchResults => this.setState({searchResults}, this.updateResultsShelves));
+    }
+
+    resetSearchResults = () => {
+        this.setState({searchResults: []});
+    }
 
     updateResultsShelves = () => {
         // TODO: update shelves on search results
