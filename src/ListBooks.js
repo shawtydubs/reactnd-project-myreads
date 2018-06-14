@@ -27,7 +27,7 @@ class ListBooks extends Component {
                     <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
                 </div>
             </div>
-        )
+        );
     };
 };
 
