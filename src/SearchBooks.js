@@ -12,26 +12,38 @@ class SearchBooks extends Component {
     }
 
     searchBooks = query => {
-        this.setState({value: query.trim()}, this.updateResults);
+        this.setState({value: query.trim()}, this.queryAPI);
     }
 
-    updateResults = () => {
+    queryAPI = () => {
         this.state.value === ''
             ? this.resetSearchResults()
             : BooksAPI.search(this.state.value)
-                .then(searchResults => this.setState({searchResults}, this.updateResultsShelves));
+                .then(searchResults => this.updateSearchResults(searchResults));
     }
 
     resetSearchResults = () => {
         this.setState({searchResults: []});
     }
 
-    updateResultsShelves = () => {
-        // TODO: update shelves on search results
+    updateSearchResults = (searchResults) => {
+        let updatedSearchResults = []
+
+        if (searchResults && !("error" in searchResults)) {
+            updatedSearchResults = searchResults.map(result => {
+                const bookInState = _.find(this.props.books, {id: result.id});
+                result.shelf = bookInState ? bookInState.shelf : 'none';
+                return result;
+            });
+        } else {
+            updatedSearchResults = searchResults;
+        }
+
+        this.setState({searchResults: updatedSearchResults});
     }
 
     render() {
-        const {books, updateShelf} = this.props;
+        const {updateShelf} = this.props;
         const {searchResults, value} = this.state;
 
         const noSearchResults = searchResults => (_.isEmpty(searchResults) || "error" in searchResults);
