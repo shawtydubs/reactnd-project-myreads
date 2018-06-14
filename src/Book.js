@@ -5,7 +5,8 @@ import BookshelfChanger from './BookshelfChanger';
 class Book extends Component {
     render() {
         const {book, updateShelf} = this.props;
-        const {authors, id, imageLinks: {thumbnail}, shelf, title} = book;
+        const {authors, id, imageLinks, shelf, title} = book;
+        const thumbnail = imageLinks ? imageLinks.thumbnail : null;
 
         return (
             <div className="book">
@@ -14,7 +15,7 @@ class Book extends Component {
                     <BookshelfChanger bookId={id} shelf={shelf} updateShelf={updateShelf} />
                 </div>
                 <div className="book-title">{title}</div>
-                <div className="book-authors">{authors.join(', ')}</div>
+                <div className="book-authors">{authors ? authors.join(', ') : null}</div>
             </div>
         );
     };
