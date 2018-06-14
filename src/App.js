@@ -20,10 +20,18 @@ class BooksApp extends React.Component {
         BooksAPI.getAll().then(books => this.setState({books}));
     };
 
+    // TODO: make this update the state
+    updateShelf = (bookId, shelf) => {
+        console.log('updating the shelf');
+    };
+
     render() {
         return (
             <div className="app">
-                {this.state.showSearchPage ? <SearchBooks /> : <ListBooks books={this.state.books}/>}
+                {this.state.showSearchPage
+                    ? <SearchBooks />
+                    : <ListBooks books={this.state.books} updateShelf={this.updateShelf}/>
+                }
             </div>
         )
     };

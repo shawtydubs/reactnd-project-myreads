@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class BookshelfChanger extends Component {
     render() {
-        const {shelf} = this.props;
+        const {bookId, shelf, updateShelf} = this.props;
 
         const statusValues = [
             {
@@ -32,7 +32,7 @@ class BookshelfChanger extends Component {
 
         return (
             <div className="book-shelf-changer">
-                <select value={shelf}>
+                <select value={shelf} onChange={() => updateShelf(bookId, shelf)}>
                     {statusValues.map(status => (
                         <option
                             key={status.shelf}
@@ -49,7 +49,9 @@ class BookshelfChanger extends Component {
 };
 
 BookshelfChanger.propTypes = {
-    shelf: PropTypes.string.isRequired
+    bookId: PropTypes.string,
+    shelf: PropTypes.string.isRequired,
+    updateShelf: PropTypes.func.isRequired
 }
 
 export default BookshelfChanger;

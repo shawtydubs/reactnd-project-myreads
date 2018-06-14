@@ -4,13 +4,14 @@ import BookshelfChanger from './BookshelfChanger';
 
 class Book extends Component {
     render() {
-        const {authors, imageLinks: {thumbnail}, shelf, title} = this.props.book;
+        const {book, updateShelf} = this.props;
+        const {authors, id, imageLinks: {thumbnail}, shelf, title} = book;
 
         return (
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
-                    <BookshelfChanger shelf={shelf} />
+                    <BookshelfChanger bookId={id} shelf={shelf} updateShelf={updateShelf} />
                 </div>
                 <div className="book-title">{title}</div>
                 <div className="book-authors">{authors.join(', ')}</div>
@@ -20,7 +21,8 @@ class Book extends Component {
 };
 
 Book.propTypes = {
-    book: PropTypes.object.isRequired
+    book: PropTypes.object.isRequired,
+    updateShelf: PropTypes.func.isRequired
 };
 
 export default Book;
