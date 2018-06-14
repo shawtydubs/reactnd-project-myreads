@@ -6,11 +6,26 @@ class BookshelfChanger extends Component {
         const {shelf} = this.props;
 
         const statusValues = [
-            ['move', 'Move to...'],
-            ['currentlyReading', 'Currently Reading'],
-            ['wantToRead', 'Want to Read'],
-            ['read', 'Read'],
-            ['none', 'None']
+            {
+                shelf: 'move',
+                name: 'Move to...'
+            },
+            {
+                shelf: 'currentlyReading',
+                name: 'Currently Reading'
+            },
+            {
+                shelf: 'wantToRead',
+                name: 'Want to Read'
+            },
+            {
+                shelf: 'read',
+                name: 'Read'
+            },
+            {
+                shelf: 'none',
+                name: 'None'
+            }
         ];
 
         const isDisabled = (status) => status === 'move';
@@ -20,11 +35,11 @@ class BookshelfChanger extends Component {
                 <select value={shelf}>
                     {statusValues.map(status => (
                         <option
-                            key={status[0]}
-                            value={status[0]}
-                            disabled={isDisabled(status[0])}
+                            key={status.shelf}
+                            value={status.shelf}
+                            disabled={isDisabled(status.shelf)}
                         >
-                            {status[1]}
+                            {status.name}
                         </option>
                     ))};
                 </select>
