@@ -15,17 +15,14 @@ class BookshelfChanger extends Component {
 
         const isDisabled = (status) => status === 'move';
 
-        const isSelected = (status) => status === shelf;
-
         return (
             <div className="book-shelf-changer">
-                <select>
+                <select value={shelf}>
                     {statusValues.map(status => (
                         <option
                             key={status[0]}
                             value={status[0]}
                             disabled={isDisabled(status[0])}
-                            selected={isSelected(status[0])}
                         >
                             {status[1]}
                         </option>
