@@ -29,7 +29,7 @@ class SearchBooks extends Component {
     updateSearchResults = (searchResults) => {
         let updatedSearchResults = []
 
-        if (searchResults && !("error" in searchResults)) {
+        if (this.searchResultsExist(searchResults)) {
             updatedSearchResults = searchResults.map(result => {
                 const bookInState = _.find(this.props.books, {id: result.id});
                 result.shelf = bookInState ? bookInState.shelf : 'none';
@@ -41,6 +41,8 @@ class SearchBooks extends Component {
 
         this.setState({searchResults: updatedSearchResults});
     }
+
+    searchResultsExist = searchResults => searchResults && !("error" in searchResults);
 
     render() {
         const {updateShelf} = this.props;
