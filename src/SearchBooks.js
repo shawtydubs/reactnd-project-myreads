@@ -12,13 +12,13 @@ class SearchBooks extends Component {
     }
 
     searchBooks = query => {
-        this.setState({value: query.trim()}, this.queryAPI);
+        this.setState({value: query}, this.queryAPI);
     }
 
     queryAPI = () => {
         this.state.value === ''
             ? this.resetSearchResults()
-            : BooksAPI.search(this.state.value)
+            : BooksAPI.search(this.state.value.trim())
                 .then(searchResults => this.updateSearchResults(searchResults));
     }
 
