@@ -32,7 +32,7 @@ class BookshelfChanger extends Component {
 
         return (
             <div className="book-shelf-changer">
-                <select value={shelf} onChange={() => updateShelf(bookId, shelf)}>
+                <select value={shelf} onChange={(event) => updateShelf(bookId, event.target.value)}>
                     {statusValues.map(status => (
                         <option
                             key={status.shelf}
