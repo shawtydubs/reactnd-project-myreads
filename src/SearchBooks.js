@@ -16,7 +16,9 @@ class SearchBooks extends Component {
     }
 
     queryAPI = () => {
-        this.state.value === ''
+        const query = this.state.value;
+
+        this.queryIsNotValid(query) || query === ''
             ? this.resetSearchResults()
             : BooksAPI.search(this.state.value.trim())
                 .then(searchResults => this.updateSearchResults(searchResults));
@@ -44,6 +46,8 @@ class SearchBooks extends Component {
 
     searchResultsExist = searchResults => searchResults && !("error" in searchResults);
 
+    queryIsNotValid = query => !/\S/.test(query);
+
     render() {
         const {updateShelf} = this.props;
         const {searchResults, value} = this.state;
@@ -64,7 +68,7 @@ class SearchBooks extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    {"error" in searchResults &&
+                    {(  "error" in searchResults) &&
                         <p>No search results</p>
                     }
 
