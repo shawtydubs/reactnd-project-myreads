@@ -7,7 +7,7 @@ or have already read. You can also search for books and add them to one of your 
 
 ## Repository
 
-The repo for this app is located at: https://github.com/shawtydubs/reactnd-project-myreads-starter
+The repo for this app is located at: https://github.com/shawtydubs/reactnd-project-myreads
 
 ## Get Started
 
