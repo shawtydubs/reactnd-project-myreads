@@ -33,6 +33,6 @@ const ListBooks = (props) => {
 ListBooks.propTypes = {
     books: PropTypes.array.isRequired,
     updateShelf: PropTypes.func.isRequired
-}
+};
 
 export default ListBooks;

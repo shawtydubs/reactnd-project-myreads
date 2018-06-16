@@ -16,7 +16,7 @@ const Book = (props) => {
             <div className="book-title">{title}</div>
             <div className="book-authors">{authors ? authors.join(', ') : null}</div>
         </div>
-    );
+    )
 };
 
 Book.propTypes = {

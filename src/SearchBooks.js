@@ -44,9 +44,9 @@ class SearchBooks extends Component {
         this.setState({searchResults: updatedSearchResults});
     }
 
-    searchResultsExist = searchResults => searchResults && !("error" in searchResults);
+    searchResultsExist = searchResults => searchResults && !("error" in searchResults)
 
-    queryIsNotValid = query => !/\S/.test(query);
+    queryIsNotValid = query => !/\S/.test(query)
 
     render() {
         const {updateShelf} = this.props;
@@ -80,7 +80,7 @@ class SearchBooks extends Component {
                 </div>
             </div>
         )
-    };
+    }
 };
 
 SearchBooks.propTypes = {

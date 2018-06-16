@@ -50,6 +50,6 @@ BookshelfChanger.propTypes = {
     bookId: PropTypes.string,
     shelf: PropTypes.string.isRequired,
     updateShelf: PropTypes.func.isRequired
-}
+};
 
 export default BookshelfChanger;

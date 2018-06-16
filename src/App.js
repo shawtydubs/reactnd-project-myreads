@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import ListBooks from './ListBooks';
 import {Route} from 'react-router-dom';
@@ -37,7 +37,7 @@ class BooksApp extends React.Component {
                 )} />
             </div>
         )
-    };
+    }
 };
 
-export default BooksApp
+export default BooksApp;
