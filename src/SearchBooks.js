@@ -16,11 +16,11 @@ class SearchBooks extends Component {
     }
 
     queryAPI = () => {
-        const query = this.state.value;
+        const {value} = this.state;
 
-        this.queryIsNotValid(query) || query === ''
+        this.queryIsNotValid(value) || value === ''
             ? this.resetSearchResults()
-            : BooksAPI.search(this.state.value.trim())
+            : BooksAPI.search(value.trim())
                 .then(searchResults => this.updateSearchResults(searchResults));
     }
 
