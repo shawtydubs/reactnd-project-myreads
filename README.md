@@ -19,4 +19,4 @@ npm start
 
 ## Contribute
 
-To contribte, please open a pull request against the repository.
+To contribute, please open a pull request against the repository.
