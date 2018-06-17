@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import _ from 'lodash';
 import Bookshelf from './Bookshelf';
 
 const ListBooks = (props) => {
     const {books, updateShelf} = props;
-
-    const currentlyReadingList = _.filter(books, {shelf: 'currentlyReading'});
-    const readList = _.filter(books, {shelf: 'read'});
-    const wantToReadList = _.filter(books, {shelf: 'wantToRead'});
+    const shelfList = [
+        {
+            status: 'currentlyReading',
+            name: 'Currently Reading'
+        },
+        {
+            status: 'wantToRead',
+            name: 'Want to Read'
+        },
+        {
+            status: 'read',
+            name: 'Read'
+        }
+    ];
 
     return (
         <div className="list-books">
@@ -18,9 +27,9 @@ const ListBooks = (props) => {
             </div>
             <div className="list-books-content">
                 <div>
-                    <Bookshelf title="Currently Reading" books={currentlyReadingList} updateShelf={updateShelf} />
-                    <Bookshelf title="Want to Read" books={wantToReadList} updateShelf={updateShelf} />
-                    <Bookshelf title="Read" books={readList} updateShelf={updateShelf} />
+                    {shelfList.map(shelf => (
+                        <Bookshelf key={shelf.status} shelf={shelf} books={books} updateShelf={updateShelf} />
+                    ))}
                 </div>
             </div>
             <div className="open-search">
